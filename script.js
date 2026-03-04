@@ -64,6 +64,13 @@ const displayWordDeteil=(deteils)=>{
     
 }
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
+
 const displayLevelWord=(levels)=>{
     //  console.log(levels);
     const cardContainar=document.getElementById("card-containar");
@@ -89,7 +96,7 @@ const displayLevelWord=(levels)=>{
             <p class="font-semibold text-lg font-bangla">${word.pronunciation ? word.pronunciation : "this word is not found"} </p>
             <div class="flex justify-between items-center">
                 <button onclick="loadWordDeteil(${word.id})" class="btn bg-slate-100 hover:bg-slate-400"><i class="fa-solid fa-circle-info"></i></button>
-                <button class="btn bg-slate-100 hover:bg-slate-400"><i class="fa-solid fa-volume-high"></i></button>
+                <button onclick="pronounceWord('${word.word}')" class="btn bg-slate-100 hover:bg-slate-400"><i class="fa-solid fa-volume-high"></i></button>
             </div>
         </div>
         `;
